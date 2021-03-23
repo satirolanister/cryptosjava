@@ -26,11 +26,11 @@ public class Seguridad {
             String fStr = new String(decoder.decode(pStr)); 
             
             if(dStr.equalsIgnoreCase(user) && fStr.equalsIgnoreCase(pass)){
-                System.out.println("Acceso concedido");
+                System.out.println("Acceso concedido, bienvenido "+user.toUpperCase());
             }else{
                 System.out.println("Acceso no concedido");
             }
-
+                
         };
         
         
