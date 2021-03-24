@@ -28,6 +28,7 @@ public class Seguridad {
             String fStr = new String(decoder.decode(pStr)); 
             
             if(dStr.equalsIgnoreCase(user) && fStr.equalsIgnoreCase(pass)){
+                s.dispose();
                 s.setVisible(false);
                 h.setVisible(true);
                 h.info(dStr);

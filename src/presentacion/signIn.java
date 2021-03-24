@@ -98,6 +98,8 @@ public class signIn extends javax.swing.JFrame {
         String pass = new String(arrayC);
         Login login = new Login();
         login.signUp(user, pass);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
