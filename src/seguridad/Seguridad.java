@@ -1,22 +1,24 @@
 package seguridad;
 
 import java.util.Base64;
+import presentacion.home;
+import presentacion.signIn;
+
 
 
 public class Seguridad {
-
+    
+    private String userdb = "alex";
+    private String passdb = "hola";
        
-    public Seguridad(){
-    };
-
     public void encriptar(String user, String pass){
-        String userdb = "alex";
-        String passdb = "hola";
+        home h = new home();
+        signIn s = new signIn();
              // Getting encoder  
         Base64.Encoder encoder = Base64.getEncoder();  
         // Encoding URL  
-        String eStr = encoder.encodeToString(userdb.getBytes());  
-        String pStr = encoder.encodeToString(passdb.getBytes());
+        String eStr = encoder.encodeToString(this.userdb.getBytes());  
+        String pStr = encoder.encodeToString(this.passdb.getBytes());
         
         if(user == " " && pass == " "){
             System.out.println("Usuario o contraseña no pueden ser vacios");
@@ -26,9 +28,11 @@ public class Seguridad {
             String fStr = new String(decoder.decode(pStr)); 
             
             if(dStr.equalsIgnoreCase(user) && fStr.equalsIgnoreCase(pass)){
-                System.out.println("Acceso concedido, bienvenido "+user.toUpperCase());
+                s.setVisible(false);
+                h.setVisible(true);
+                h.info(dStr);
             }else{
-                System.out.println("Acceso no concedido");
+              s.setVisible(true);
             }
                 
         };

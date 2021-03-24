@@ -5,7 +5,7 @@
  */
 package login;
 import seguridad.Seguridad;
-import java.util.Scanner;
+
 
 /**
  *
@@ -13,22 +13,16 @@ import java.util.Scanner;
  */
 public class Login {
     
+    private String userlogin;
+    private String passlogin;
     
-    public void signUp(){
-        Seguridad seguridad = new Seguridad();
-        
-       String userlogin = "";
-       String passlogin = "";
-       
-       
-       System.out.println("Bienvenido, ingrese por favor");
-       System.out.println("por favor ingrese usuario");
-       Scanner userentrada = new Scanner(System.in);
-       userlogin = userentrada.nextLine();
-       System.out.println("por favor ingrese contraseña");
-       Scanner passentrada = new Scanner(System.in);
-       passlogin = passentrada.nextLine();
-       
+    
+    public void signUp(String user, String pass){
+       Seguridad seguridad = new Seguridad();
+
+       this.userlogin = user;
+       this.passlogin = pass;
+
        seguridad.encriptar(userlogin, passlogin);
     }
     
