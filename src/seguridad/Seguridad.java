@@ -6,12 +6,13 @@ import presentacion.signIn;
 
 
 
+
 public class Seguridad {
     
     private String userdb = "alex";
     private String passdb = "hola";
        
-    public void encriptar(String user, String pass){
+    public void encriptar(String user, String pass) throws Exception{
         home h = new home();
         signIn s = new signIn();
              // Getting encoder  
@@ -31,7 +32,7 @@ public class Seguridad {
                 s.dispose();
                 s.setVisible(false);
                 h.setVisible(true);
-                h.info(dStr);
+                h.info(dStr, fStr);
             }else{
               s.setVisible(true);
             }

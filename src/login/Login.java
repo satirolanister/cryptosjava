@@ -17,7 +17,7 @@ public class Login {
     private String passlogin;
     
     
-    public void signUp(String user, String pass){
+    public void signUp(String user, String pass) throws Exception{
        Seguridad seguridad = new Seguridad();
 
        this.userlogin = user;

@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package presentacion;
-import presentacion.signIn;
+import org.apache.commons.codec.digest.DigestUtils; 
+import seguridad.Asimetrico;
 /**
  *
  * @author servicedesk05
@@ -18,9 +19,27 @@ public class home extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void info(String user){
+    public void info(String user, String pass) throws Exception{
+        
         String a = user;
+        String b = pass;
+        
+        String aencrip = DigestUtils.md5Hex(a);
+        String bencrip = DigestUtils.md5Hex(b);
+        
+        Asimetrico as = new Asimetrico();
+        
+        String aencripa = as.cifrado(a);
+        String benciipa = as.cifrado(b);
+        
+        
         txtinfo.setText("Bienvenido de nuevo, "+a.toUpperCase());
+        txtmensaje.setText("Cifrado simetrico"+"\n"+"Hola usuario encriptado en md5 "+aencrip+"\n"+
+                           "Hola la contraseña encritada en md5 "+bencrip+"\n"+
+                           "-------------------------------------------------"+"\n"+
+                           "Cifrado asimetrico"+"\n"+        
+                           "Hola usuario encriptado en RSA "+aencripa+"\n"+
+                           "Hola contraseña encriptada en RSA "+benciipa);
     }
     
     /**
@@ -34,15 +53,14 @@ public class home extends javax.swing.JFrame {
 
         txtinfo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtmensaje = new javax.swing.JTextArea();
         btnexit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Esto es un login improvisado con encriptación simetrica y jpanel");
-        jScrollPane1.setViewportView(jTextArea1);
+        txtmensaje.setColumns(20);
+        txtmensaje.setRows(5);
+        jScrollPane1.setViewportView(txtmensaje);
 
         btnexit.setText("Salir");
         btnexit.addActionListener(new java.awt.event.ActionListener() {
@@ -56,27 +74,26 @@ public class home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtinfo, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(btnexit)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(txtinfo, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnexit, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(348, 348, 348))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtinfo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(btnexit)
-                .addGap(36, 36, 36))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnexit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,7 +144,7 @@ public class home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnexit;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel txtinfo;
+    private javax.swing.JTextArea txtmensaje;
     // End of variables declaration//GEN-END:variables
 }
