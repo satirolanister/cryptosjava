@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package presentacion;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import login.Login;
 
 /**
@@ -97,7 +99,11 @@ public class signIn extends javax.swing.JFrame {
         char[] arrayC = txtpass.getPassword();
         String pass = new String(arrayC);
         Login login = new Login();
-        login.signUp(user, pass);
+        try {
+            login.signUp(user, pass);
+        } catch (Exception ex) {
+            Logger.getLogger(signIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
