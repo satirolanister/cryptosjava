@@ -9,8 +9,8 @@ import presentacion.signIn;
 
 public class Seguridad {
     
-    private String userdb = "alex";
-    private String passdb = "hola";
+    private String userdb = "jlisardo";
+    private String passdb = "marzo";
        
     public void encriptar(String user, String pass) throws Exception{
         home h = new home();

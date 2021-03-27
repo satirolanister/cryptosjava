@@ -33,7 +33,7 @@ public class home extends javax.swing.JFrame {
         String benciipa = as.cifrado(b);
         
         
-        txtinfo.setText("Bienvenido de nuevo, "+a.toUpperCase());
+        txtinfo.setText("Bienvenido de nuevo, "+a.toUpperCase()+"\n"+" Su contraseña es "+b);
         txtmensaje.setText("Cifrado simetrico"+"\n"+"Hola usuario encriptado en md5 "+aencrip+"\n"+
                            "Hola la contraseña encritada en md5 "+bencrip+"\n"+
                            "-------------------------------------------------"+"\n"+
@@ -76,8 +76,8 @@ public class home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtinfo, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtinfo, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
